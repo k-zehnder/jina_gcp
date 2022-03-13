@@ -13,7 +13,6 @@ class ItemIdOnly(BaseModel):
     id: str
 
 # class ItemIn(PydanticDocument):
-#     id: str
 #     text: str = "hello"
 
 
@@ -22,10 +21,12 @@ async def get_item_no_embedding():
     d = Document(embedding=[1, 2, 3])
     return d.to_pydantic_model()
 
-@app.post('/single')
+@app.post('/single', response_model=ItemIdOnly)
 async def create_item(item: PydanticDocument):
-    #{"text" : "hello"}
     d = Document.from_pydantic_model(item)
+
+    # {"text" : "hello"} manually in FastAPI swagger
+    # d = Document.from_pydantic_model(ItemIn(**{"text":"hello"}))
     # now `d` is a Document object
     ...  # process `d` how ever you want
     return d.to_pydantic_model()
