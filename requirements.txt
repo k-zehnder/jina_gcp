@@ -7,4 +7,5 @@ opencv-python
 uvicorn
 fastapi
 pydantic
-docarray[full]
+docarray
+fastapi[all]
