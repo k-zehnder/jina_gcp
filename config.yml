@@ -1,0 +1,14 @@
+jtype: Flow
+executors:
+  - name: my_executor
+    uses: MyExecutor
+    py_modules: 
+      - executor_one/__init__.py
+  - name: simple_indexer
+    uses: SimpleIndexer
+    py_modules: 
+      - executor_two/__init__.py
+  - name: clip_text
+    uses: CLIPTextEncoder
+    py_modules: 
+      - executor_three/__init__.py
